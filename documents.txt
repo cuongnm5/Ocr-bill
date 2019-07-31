@@ -1,0 +1,25 @@
+1. Create project
+    django-admin startproject mysite
+
+2. Create app
+    python3 manage.py startapp [name]
+    python3 manage.py migrate
+
+3. Import include and add url in urls.py
+
+4. Config views.py, urls.py on app
+
+5. create templates/pages and static to save front-end
+
+6. Create form.py to get data like a form
+
+7. In models.py, add class and model
+
+8. In views.py, add function
+
+9. In urls.py, add urlpatterns to create new feature
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+10. Create feature.html in templates/pages
+
+11.

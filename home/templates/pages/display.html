@@ -13,10 +13,10 @@
 </head> 
 <body> 
   
-    {% for hotel in hotel_images %} 
+    {% for image in image_display %} 
             <div class="col-md-4"> 
-                    {{ hotel.name }} 
-                     <img src="{{ hotel.Img_test.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
+                    {{ image.name }} 
+                     <img src="{{ image.Img_test.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
             </div> 
     {% endfor %} 
   

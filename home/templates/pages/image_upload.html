@@ -1,14 +1,27 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <title>Test_image</title> 
-</head> 
-<body> 
-    <form method = "post" enctype="multipart/form-data"> 
-        {% csrf_token %} 
-        {{ form.as_p }} 
-        <button type="submit">Upload</button> 
-    </form> 
-</body> 
-</html>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- Standar Form -->
+                    <h4>Select files from your computer</h4>
+                    <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                     {% csrf_token %} 
+                     {{ form.as_p }}
+                    <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="background-color: antiquewhite">
+            <h3> Kết quả </h3>
+        </div>
+    </div>
+ 
+
+</div> <!-- /container -->
