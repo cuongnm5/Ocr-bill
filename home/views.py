@@ -7,15 +7,15 @@ def home(request):
 
 def upload_image(request): 
   
-    if request.method == 'POST': 
-        form = TestForm(request.POST, request.FILES) 
+    # if request.method == 'POST': 
+    #     form = TestForm(request.POST, request.FILES) 
   
-        if form.is_valid(): 
-            form.save() 
-            return redirect('image_display') 
-    else: 
-        form = TestForm() 
-    return render(request, 'pages/image_upload.html', {'form' : form}) 
+    #     if form.is_valid(): 
+    #         form.save() 
+    #         return redirect('image_display') 
+    # else: 
+    #     form = TestForm() 
+    return render(request, 'pages/image_upload.html') 
 
 def display_images(request): 
 

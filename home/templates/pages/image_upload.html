@@ -3,6 +3,8 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+{% load staticfiles %}
+
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
@@ -11,9 +13,10 @@
                     <!-- Standar Form -->
                     <h4>Select files from your computer</h4>
                     <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-                     {% csrf_token %} 
-                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                     {% comment %} {% csrf_token %} 
+                     {{ form.as_p }} {% endcomment %}
+                     <input type="file" id="files" name="files" />
+                     <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
                     </form>
                 </div>
             </div>
@@ -21,7 +24,13 @@
         <div class="col-sm-6" style="background-color: antiquewhite">
             <h3> Kết quả </h3>
         </div>
+        <div class = 'image' id = 'images'>
+            
+        </div>
     </div>
+
+    <script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
+    <script src="{% static 'js/socket_image.js' %}"></script>
  
 
 </div> <!-- /container -->

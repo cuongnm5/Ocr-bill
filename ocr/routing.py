@@ -11,7 +11,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ocr.settings')
 django.setup()
 
 websocket_urlpatterns = [
-    url('image/', ImageConsumer),
+    url('message/', ImageConsumer),
 ]
 
 application = ProtocolTypeRouter({
