@@ -13,20 +13,20 @@
                     <!-- Standar Form -->
                     <h4>Select files from your computer</h4>
                     <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-                     {% comment %} {% csrf_token %} 
-                     {{ form.as_p }} {% endcomment %}
                      <input type="file" id="files" name="files" />
                      <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
                     </form>
+                        <ul id='images'>
+
+                        </ul>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6" style="background-color: antiquewhite">
+        <div class="col-sm-6" style="background-color: antiquewhite" id="js-display">
             <h3> Kết quả </h3>
+
         </div>
-        <div class = 'image' id = 'images'>
-            
-        </div>
+        
     </div>
 
     <script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>

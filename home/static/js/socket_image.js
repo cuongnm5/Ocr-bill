@@ -31,8 +31,9 @@ function run() {
     socket.onmessage = function (e) {
       console.log(e)
       var responseData = JSON.parse(e.data);
-      $('#images').append($('<img alt=\"Avatar\" style=\"position: absolute; top: 0px; left: 0px;\" src=\"data:image/png;base64,' + 
-      responseData.translatedText + '\"/>'));
+      $('#images').append($('<li><img alt=\"Avatar\"src=\"data:image/png;base64,' + responseData.base64 + '\"></li>'));
     }
+
+
   };
   run(); 

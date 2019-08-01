@@ -60,15 +60,18 @@ class GoogleAPI(object):
         response = client.text_detection(image=image)
         texts = response.text_annotations
         print('Texts:')
-
+        temp = []
         for text in texts:
             print('\n"{}"'.format(text.description))
-
+            
             # vertices = (['({},{})'.format(vertex.x, vertex.y)
             #             for vertex in text.bounding_poly.vertices])
 
             # print('bounds: {}'.format(','.join(vertices)))
-
+        return texts
+        
 if __name__ == "__main__":
     test_api = GoogleAPI()
-    test_api.detect_document("test.jpg")
+    ans = test_api.detect_text("images/logo.jpg")
+    print('----------------------------')
+    # print(ans.description)
