@@ -58,12 +58,15 @@ class GoogleAPI(object):
         image = vision.types.Image(content=content)
 
         response = client.text_detection(image=image)
-        texts = response.text_annotations
-        print('Texts:')
-        temp = []
-        for text in texts:
-            print('\n"{}"'.format(text.description))
-            
+
+        texts = response.full_text_annotation
+
+        print(texts.text)
+
+        # print('Texts:"{}"'.format(texts.text))
+        # for text in texts:
+        #     print('\n"{}"'.format(text.description))
+        #     print()
             # vertices = (['({},{})'.format(vertex.x, vertex.y)
             #             for vertex in text.bounding_poly.vertices])
 
@@ -74,4 +77,4 @@ if __name__ == "__main__":
     test_api = GoogleAPI()
     ans = test_api.detect_text("images/logo.jpg")
     print('----------------------------')
-    # print(ans.description)
+    
