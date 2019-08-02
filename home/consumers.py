@@ -1,6 +1,7 @@
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 import base64
 from .google_api import *
+from google.protobuf.json_format import MessageToJson
 
 class ImageConsumer(AsyncJsonWebsocketConsumer):  
     async def receive_json(self, content, **kwargs):
@@ -14,9 +15,10 @@ class ImageConsumer(AsyncJsonWebsocketConsumer):
             
         api = GoogleAPI()
         ans = api.detect_text(filename)
+        print(ans)
 
         await self.send_json(content={
             "event": "OCR_response", 
-            "Text_Description": ans.text,
+            "Text_Description": MessageToJson(ans),
             "base64":b64_text
             })
