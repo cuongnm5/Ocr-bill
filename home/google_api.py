@@ -19,14 +19,15 @@ class GoogleAPI(object):
 
         response = client.document_text_detection(image=image)
         texts = response.text_annotations
-        print('Texts:')
+        return texts
+        # print('Texts:')
 
-        for text in texts:
-            print('\n"{}"'.format(text.description))
-            vertices = (['({},{})'.format(vertex.x, vertex.y)
-                        for vertex in text.bounding_poly.vertices])
+        # for text in texts:
+        #     print('\n"{}"'.format(text.description))
+        #     vertices = (['({},{})'.format(vertex.x, vertex.y)
+        #                 for vertex in text.bounding_poly.vertices])
 
-            print('bounds: {}'.format(','.join(vertices)))
+        #     print('bounds: {}'.format(','.join(vertices)))
             
         # for page in response.full_text_annotation.pages:
         #     for block in page.blocks:

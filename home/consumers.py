@@ -15,7 +15,6 @@ class ImageConsumer(AsyncJsonWebsocketConsumer):
             
         api = GoogleAPI()
         ans = api.detect_text(filename)
-        print(ans)
 
         await self.send_json(content={
             "event": "OCR_response", 

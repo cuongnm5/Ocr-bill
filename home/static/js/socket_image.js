@@ -1,3 +1,35 @@
+function getParagraph(block){
+  //this function gonna return a bunch of words in a block
+  var res = [];
+  var paras = block['paragraphs'];
+  for (i in paras){
+    var para = paras[i];
+    res = res.concat(getWord(para));
+  }
+  return res;
+}
+
+function getWord(para){
+  var res = [];
+  var words = para['words'];
+  for (i in words){
+    var word = words[i];
+    var coordinate = word['boundingBox'];
+    res.push({'text': getSym(word), 'boundingBox': coordinate});
+  }
+  // console.log(res);
+  return res;
+}
+
+function getSym(word){
+  var res = '';
+  var symbols = word['symbols'];
+  for (i in symbols){
+    res += symbols[i]['text'];
+  }
+  return res;
+}
+
 function run() {
     endpoint = 'ws://' + window.location.host + '/message/';
     console.log(window.location.host)
@@ -32,8 +64,20 @@ function run() {
       console.log(e);
       var responseData = JSON.parse(e.data);
       $('#images').append($('<li><img alt=\"Avatar\"src=\"data:image/png;base64,' + responseData.base64 + '\"></li>'));
-      $('#result').append($('<li> ' + responseData.Text_Description + ' </li>'));
-    }
+      var text_data = JSON.parse(responseData.Text_Description);
+      var blocks = text_data['pages'][0]['blocks'];
+      console.log(blocks);
+      var words = {'words': []};
+      for (index in blocks){
+        var block = blocks[index];
+        words['words'] = words['words'].concat(getParagraph(block)); //bind word from each block together
+      }
+      console.log(words);
+      for (index in words['words']){
+        word = words['words'][index];
+        $('#result').append($('<li> ' + JSON.stringify(word['boundingBox']['vertices']) + '</br>' + word['text'] + ' </li>'))
+      }
+    };
 
 
   };
