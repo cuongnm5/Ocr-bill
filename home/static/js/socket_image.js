@@ -29,27 +29,31 @@ function getSym(word){
   }
   return res;
 }
- 
+
 function merger_text(w) {
   var res = [];
   var words = w['words'];
   var index = 0;
+  
+  words.sort(function(a, b) {
+    return a['boundingBox']['vertices'][1]['y'] - b['boundingBox']['vertices'][1]['y'];
+  });
+
   while (index <= words.length - 1){
     var temp = '';
     temp += words[index]['text'] + ' ';
     if(index < words.length - 2) {
-      while (Math.abs(words[index]['boundingBox']['vertices'][1]['y'] - words[index+1]['boundingBox']['vertices'][1]['y']) < 8) 
+      while (Math.abs(words[index]['boundingBox']['vertices'][1]['y'] - words[index+1]['boundingBox']['vertices'][1]['y']) < 15) 
       {
         temp += words[index+1]['text'] + ' ';
         index+=1;
-        console.log(index);
         if(index >= words.length - 1) {
           break;
         }
       }     
     }
     index+=1;
-    res.push({'text': temp});
+    res.push(temp);
   }
   return res;
 }
@@ -102,9 +106,11 @@ function run() {
       var res=merger_text(words);
       console.log(res);
  
-      for (index in words['words']){
-        word = words['words'][index];
-        $('#result').append($('<li> ' + JSON.stringify(word['boundingBox']['vertices']) + '</br>' + word['text'] + ' </li>'))
+      for (i in res){
+        // word = words['words'][index];
+        // $('#result').append($('<li> ' + JSON.stringify(word['boundingBox']['vertices']) + word['text'] + ' </li>'))
+        $('#result').append($('<li> ' + res[i] + ' </li>'))
+      
       }
     };
  

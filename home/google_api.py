@@ -58,7 +58,7 @@ class GoogleAPI(object):
 
         image = vision.types.Image(content=content)
 
-        response = client.text_detection(image=image)
+        response = client.document_text_detection(image=image)
 
         texts = response.full_text_annotation
 
