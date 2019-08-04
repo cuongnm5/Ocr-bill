@@ -13,11 +13,11 @@ class ImageConsumer(AsyncJsonWebsocketConsumer):
         with open(filename, 'wb') as f:
             f.write(img)
             
-        api = GoogleAPI()
-        ans = api.detect_text(filename)
+        # api = GoogleAPI()
+        # ans = api.detect_text(filename)
 
         await self.send_json(content={
             "event": "OCR_response", 
-            "Text_Description": MessageToJson(ans),
+            # "Text_Description": MessageToJson(ans),
             "base64":b64_text
             })
