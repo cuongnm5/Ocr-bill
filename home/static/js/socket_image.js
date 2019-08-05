@@ -93,7 +93,8 @@ function run() {
       console.log(e);
       var responseData = JSON.parse(e.data);
       $('#images').append($('<li><img alt=\"Avatar\"src=\"data:image/png;base64,' + responseData.base64 + '\"></li>'));
-      
+      $('#result').append($('<li><canvas id="canvas" width="200" height="100" style="border:1px solid #c3c3c3;"> Your browser does not support the canvas element. </canvas>'));
+      $('#result').append($('<script> var canvas = document.getElementById("canvas"); var ctx = canvas.getContext("2d"); ctx.font = "30px Arial"; ctx.fillText("Hello World",30,50); </script></li>'));
       // var text_data = JSON.parse(responseData.Text_Description);
       // var blocks = text_data['pages'][0]['blocks'];
       // console.log(blocks);
