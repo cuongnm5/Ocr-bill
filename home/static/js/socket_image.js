@@ -36,7 +36,7 @@ function getMainPath(ans) {
     for (text in ans[path]) {
       if (ans[path][text].includes('Tổng tiền')) {
         // console.log('reached here!');
-        end = Number(path);
+        end = Number(path) - 1;
         break;
       }
     }
@@ -75,7 +75,7 @@ function getTable(res) {
   //return json object 
   var ans = [];
   for (i = 0; i<res.length; i++){
-    for (j = 0; j < res[i].length; j++){
+    for (j = 0; j < res[i].length - 1; j++){
       var str = res[i][j];
       if (str.charCodeAt(0) < 48 || str.charCodeAt(0) > 57){
         if (res[i+1].length < 3) break;
@@ -86,15 +86,14 @@ function getTable(res) {
             i += 1;
           };
         }
-        console.log(result);
         ans.push(result);
         i += 1;
-        // console.log(i, j);
         break;
       }
     }
   }
-  console.log(ans);
+  return ans;
+  // console.log(ans);
 }
 
 function getSym(word) {
@@ -223,7 +222,9 @@ function run() {
     console.log(e);
     var responseData = JSON.parse(e.data);
     var file_name = 'data:image/png;base64,' + responseData.base64;
-    $('#images').append($('<div class="clickable_img" onclick="show_img_details(\'' + file_name + ' \')"> <img width = \"100\" class="img-fluid img-thumbnail" alt=\"Avatar\"src=\"data:image/png; base64, ' + responseData.base64 + '\
+    $('#images').append($('<div class="clickable_img" onclick="show_img_details(\'' + 
+                    file_name + ' \')"> <img width = \"100\" class="img-fluid img-thumbnail" alt=\"Avatar\"src=\"data:image/png; base64, ' 
+                    + responseData.base64 + '\
                     "></div>'));
     var text_data = JSON.parse(responseData.Text_Description);
     var blocks = text_data['pages'][0]['blocks'];
@@ -236,10 +237,26 @@ function run() {
 
     var res = merge_text(words);
     // console.log(res);
-    res = getMainPath(res);
-    console.log(res);
-    getTable(res);
-
+    var res = getMainPath(res);
+    var tableContent = getTable(res);
+    $('#detail').empty();
+    $('#detail').append($("<table id = 'table-content'></table>"))
+    var table = '<tr><th> Tên sản phẩm </th> <th> Mã sản phẩm </th> <th> Đồng / 1 sản phẩm </th> <th> Số lượng </th> <th> Tổng giá </th> <th> Khuyến mãi </th> </tr>';
+    var total_value = 0;
+    for (i = 0; i < tableContent.length; i++){
+      table += '<tr>';
+      table += '<th>' + tableContent[i].product_name + '</th>';
+      table += '<th>' + tableContent[i].product_code + '</th>';
+      table += '<th>' + tableContent[i].product_value + '</th>';
+      table += '<th>' + tableContent[i].product_count + '</th>';
+      table += '<th>' + tableContent[i].sum + '</th>';
+      table += '<th>' + tableContent[i].km + '</th>';
+      table += '</tr>';
+      total_value += parseFloat(tableContent[i].product_value) - parseFloat(tableContent[i].km);
+    }
+    console.log(total_value);
+    $('#table-content').append($(table));
+    $('#detail').append($("<p>Tổng cộng: " + String(Math.round(total_value * 1000)) + "</p>"));
 
 
     // for (i in res.length) {
