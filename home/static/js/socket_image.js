@@ -145,7 +145,9 @@ function run() {
     socket.onmessage = function(e) {
         console.log(e);
         var responseData = JSON.parse(e.data);
-        $('#images').append($('<li><img class="img-fluid img-thumbnail" width="150" alt=\"Avatar\"src=\"data:image/png;base64,' + responseData.base64 + '\"></li>'));
+        var file_name = 'data:image/png;base64,' + responseData.base64;
+        $('#images').append($('<div class="clickable_img" onclick="show_img_details(\'' + file_name + ' \')"> <img class="img-fluid img-thumbnail" alt=\"Avatar\"src=\"data:image/png; base64, ' + responseData.base64 + '\
+                    "></div>'));
         var text_data = JSON.parse(responseData.Text_Description);
         var blocks = text_data['pages'][0]['blocks'];
 
