@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/range_slide.css' %}">
 </head>
 
 <body>
@@ -130,7 +131,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <h3 class="text-black text-center" id='images'>TEST</h3>
+                            <h3 class="text-black text-center" id='images'> </h3>
                         </td>
                         <td>
                             <h3 class="text-black text-center">
@@ -140,8 +141,141 @@
                                 </div>
 
                                 <div id="div" class="w3-container city" style="display:none">
-                                    <h2>Paris</h2>
-                                    <p>Paris is the capital of France.</p>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-8" style="padding:2%">
+                                                <h3>Danh sách bạn bè</h3>
+                                            </div>
+                                            <div class="col-md-4" style="padding:2% ">
+                                                <h3> Số tiền thanh toán </h3>
+                                            </div>
+                                        </div>
+                                        <!--add friend -->
+                                        <style>
+                                            .people-nearby .google-maps {
+                                                background: #f8f8f8;
+                                                border-radius: 4px;
+                                                border: 1px solid #f1f2f2;
+                                                padding: 20px;
+                                                margin-bottom: 20px;
+                                            }
+                                            
+                                            .people-nearby .google-maps .map {
+                                                height: 300px;
+                                                width: 100%;
+                                                border: none;
+                                            }
+                                            
+                                            .people-nearby .nearby-user {
+                                                padding: 20px 0;
+                                                border-top: 1px solid #f1f2f2;
+                                                border-bottom: 1px solid #f1f2f2;
+                                                margin-bottom: 20px;
+                                            }
+                                            
+                                            img.profile-photo-lg {
+                                                height: 80px;
+                                                width: 80px;
+                                                border-radius: 50%;
+                                            }
+                                        </style>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="people-nearby">
+                                                    <div class="nearby-user">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+                                                            </div>
+                                                            <div class="col-md-8 col-sm-8">
+                                                                <h5><a href="#" class="profile-link">Sophia Page</a></h5>
+                                                                <p>Software Engineer</p>
+                                                                <p class="text-muted">500m away</p>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <button class="btn btn-primary pull-right">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nearby-user">
+                                                        <div class="row ">
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-lg">
+                                                            </div>
+                                                            <div class="col-md-8 col-sm-8">
+                                                                <h5><a href="#" class="profile-link">Emma Johnson</a></h5>
+                                                                <p>Model at Fashion</p>
+                                                                <p class="text-muted">800m away</p>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <button class="btn btn-primary pull-right">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nearby-user">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="user" class="profile-photo-lg">
+                                                            </div>
+                                                            <div class="col-md-8 col-sm-8">
+                                                                <h5><a href="#" class="profile-link">Nora Wilson</a></h5>
+                                                                <p>Writer at Newspaper</p>
+                                                                <p class="text-muted">2.5km away</p>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <button class="btn btn-primary pull-right">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nearby-user">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="user" class="profile-photo-lg">
+                                                            </div>
+                                                            <div class="col-md-8 col-sm-8">
+                                                                <h5><a href="#" class="profile-link">Diana Amber</a></h5>
+                                                                <p>Student</p>
+                                                                <p class="text-muted">700m away</p>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <button class="btn btn-primary pull-right">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nearby-user">
+                                                        <button class="btn btn-primary pull-center">Add more</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="people-nearby">
+                                                    <div class="nearby-user">
+                                                        <div class="value">0</div>
+                                                        <input type="range" min="0" max="1000" step="1" value="0">
+                                                    </div>
+                                                </div>
+                                                <div class="people-nearby">
+                                                    <div class="nearby-user">
+                                                        <div class="value">0</div>
+                                                        <input type="range" min="0" max="1000" step="1" value="0">
+                                                    </div>
+                                                </div>
+                                                <div class="people-nearby">
+                                                    <div class="nearby-user">
+                                                        <div class="value">0</div>
+                                                        <input type="range" min="0" max="1000" step="1" value="0">
+                                                    </div>
+                                                </div>
+                                                <div class="people-nearby">
+                                                    <div class="nearby-user">
+                                                        <div class="value">0</div>
+                                                        <input type="range" min="0" max="1000" step="1" value="0">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end Add friend -->
                                 </div>
 
                                 <div id="pay" class="w3-container city" style="display:none">
@@ -156,6 +290,16 @@
         <!-- End result-->
 
         <script>
+            var elem = document.querySelector('input[type="range"]');
+
+            var rangeValue = function() {
+                var newValue = elem.value;
+                var target = document.querySelector('.value');
+                target.innerHTML = newValue;
+            }
+
+            elem.addEventListener("input", rangeValue);
+
             function show_img_details(img_path) {
                 $('#img_detail').attr("src", img_path);
                 $('#img_detail_modal').modal('toggle');
