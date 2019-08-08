@@ -2,6 +2,8 @@ from channels.generic.websocket import AsyncJsonWebsocketConsumer
 import base64
 from .google_api import *
 from google.protobuf.json_format import MessageToJson
+import json
+
 
 class ImageConsumer(AsyncJsonWebsocketConsumer):  
     async def receive_json(self, content, **kwargs):
@@ -15,7 +17,16 @@ class ImageConsumer(AsyncJsonWebsocketConsumer):
             
         api = GoogleAPI()
         ans = api.detect_text(filename)
-        print(type(ans))
+        # with open('/home/dodo/WorkSpace/Hackathon/OCR-Finance/home/respone.json', 'r') as f:
+        #     ans = json.load(f)
+        #     ans = ans['responses'][0]['fullTextAnnotation']
+        #     ans = json.dumps(ans)
+
+        # await self.send_json(content={
+        #     "event": "OCR_response", 
+        #     "Text_Description": ans,
+        #     "base64":b64_text
+        #     })
         await self.send_json(content={
             "event": "OCR_response", 
             "Text_Description": MessageToJson(ans),
