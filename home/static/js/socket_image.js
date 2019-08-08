@@ -68,11 +68,15 @@ function merge_text(w) {
     console.log(res);
     for (i = 0; i < count; i++) {
         ans.push([]);
-        for (k in res[i].length) {
-            if (res[i][k][0] >= '0' && res[i][k][0] <= '9') {
+        // console.log(...Array(5).keys());
+        var num = res[i].length;
+        for (k = 0; k < num; k++) {
+
+            if ((res[i][k].charCodeAt(0) >= 48) && (res[i][k].charCodeAt(0) <= 57)) {
+                console.log("reach here!");
                 if (k + 1 < res[i].length) {
-                    if (res[i][k + 1][0] == '.') {
-                        if (k + 2 < res[i].length && res[i][k + 2][0] >= '0' && res[i][k + 2][0] <= '9') {
+                    if (res[i][k + 1].charAt(0) == '.') {
+                        if ((k + 2 < res[i].length) && ((res[i][k + 2].charCodeAt(0) >= 48) && (res[i][k + 2].charCodeAt(0) <= 57))) {
                             var tmp = "";
                             tmp += res[i][k] + "";
                             tmp += res[i][k + 1] + "";
@@ -92,7 +96,8 @@ function merge_text(w) {
                     if (k >= res[i].length) {
                         break;
                     }
-                    if (res[i][k][0] >= '0' && res[i][k][0] <= '9') {
+                    if (res[i][k].charCodeAt(0) >= 48 && res[i][k].charCodeAt(0) <= 57) {
+                        k--;
                         break;
                     }
                     tmp += res[i][k] + " ";
@@ -102,6 +107,7 @@ function merge_text(w) {
             }
         }
     }
+    console.log(ans);
     return ans;
 }
 
@@ -150,7 +156,7 @@ function run() {
         }
 
         var res = merge_text(words);
-        console.log(res);
+        // console.log(res);
 
         // for (i in res.length) {
 
