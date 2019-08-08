@@ -34,7 +34,7 @@ function getMainPath(ans) {
       }
     }
     for (text in ans[path]) {
-      if (ans[path][text].includes('Tổng tiền')) {
+      if (ans[path][text].includes('Tổng')) {
         // console.log('reached here!');
         end = Number(path);
         break;
@@ -45,7 +45,7 @@ function getMainPath(ans) {
   for (i = start; i < end; i++) {
     res.push(ans[i]);
   }
-  // console.log(ans);
+  console.log(ans);
   return res;
 }
 
@@ -141,7 +141,7 @@ function merge_text(w) {
   }
   var ans = [];
   var i = 0;
-  console.log(res);
+  // console.log(res);
   for (i = 0; i < count; i++) {
     ans.push([]);
     // console.log(...Array(5).keys());
@@ -182,13 +182,14 @@ function merge_text(w) {
       }
     }
   }
-  // console.log(ans);
+  console.log(ans);
   return ans;
 }
 
 
 
 function run() {
+  console.log('fjaioudfjaodhjfauidhfad');
   endpoint = 'ws://' + window.location.host + '/message/';
   console.log(window.location.host)
   var socket = new ReconnectingWebSocket(endpoint);
@@ -236,7 +237,6 @@ function run() {
     }
 
     var res = merge_text(words);
-    // console.log(res);
     var res = getMainPath(res);
     var tableContent = getTable(res);
     $('#detail').append($("<table id = 'table-content'></table>"))
