@@ -36,7 +36,7 @@ function getMainPath(ans) {
     for (text in ans[path]) {
       if (ans[path][text].includes('Tổng tiền')) {
         // console.log('reached here!');
-        end = Number(path) - 1;
+        end = Number(path);
         break;
       }
     }
@@ -74,8 +74,8 @@ function split_value_line(product_name, line){
 function getTable(res) {
   //return json object 
   var ans = [];
-  for (i = 0; i<res.length; i++){
-    for (j = 0; j < res[i].length - 1; j++){
+  for (i = 0; i<res.length - 1; i++){
+    for (j = 0; j < res[i].length; j++){
       var str = res[i][j];
       if (str.charCodeAt(0) < 48 || str.charCodeAt(0) > 57){
         if (res[i+1].length < 3) break;
@@ -239,7 +239,6 @@ function run() {
     // console.log(res);
     var res = getMainPath(res);
     var tableContent = getTable(res);
-    $('#detail').empty();
     $('#detail').append($("<table id = 'table-content'></table>"))
     var table = '<tr><th> Tên sản phẩm </th> <th> Mã sản phẩm </th> <th> Đồng / 1 sản phẩm </th> <th> Số lượng </th> <th> Tổng giá </th> <th> Khuyến mãi </th> </tr>';
     var total_value = 0;
