@@ -139,7 +139,7 @@ function run() {
     socket.onmessage = function(e) {
         console.log(e);
         var responseData = JSON.parse(e.data);
-        $('#images').append($('<li><img alt=\"Avatar\"src=\"data:image/png;base64,' + responseData.base64 + '\"></li>'));
+        $('#images').append($('<li><img class="img-fluid img-thumbnail" width="150" alt=\"Avatar\"src=\"data:image/png;base64,' + responseData.base64 + '\"></li>'));
         var text_data = JSON.parse(responseData.Text_Description);
         var blocks = text_data['pages'][0]['blocks'];
 
