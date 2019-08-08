@@ -37,11 +37,11 @@
             <div class="site-mobile-menu-body"></div>
         </div>
 
-        <header class="site-navbar py-3" role="banner">
+        <header class="site-navbar" role="banner">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-11 col-xl-2">
-                        <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">PRO<span class="text-primary">PTIT</span> </a></h1>
+                        <h1 class="mb-0"><a href="http://127.0.0.1:8000/" class="text-white h2 mb-0">PRO<span class="text-primary">PTIT</span> </a></h1>
                     </div>
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
@@ -56,10 +56,12 @@
     </div>
 
     </header>
-    <div class="container-fluid content my-5">
+    <div class="container-fluid content my-7 py-5">
+        <!--- Tiêu đề--->
         <div class="mt-5 text-center">
             <h1>OCR-Finance</h1>
         </div>
+        <!-- Upload Form -->
         <div class="offset-md-2 col-md-8 my-5">
             <div class="panel panel-default ">
                 <div class="panel-body ">
@@ -71,6 +73,7 @@
                 </div>
             </div>
         </div>
+        <!-- Result -->
         <div>
             <style>
                 tr,
@@ -85,8 +88,42 @@
                         <th class="text-center" scope="col">
                             <h2>Image</h2>
                         </th>
+                        <style>
+                            /* Create three equal columns that floats next to each other */
+                            
+                            .column {
+                                float: left;
+                                width: 33.33%;
+                                padding: 10px;
+                                /* Should be removed. Only for demonstration */
+                            }
+                            /* Clear floats after the columns */
+                            
+                            .row:after {
+                                content: "";
+                                display: table;
+                                clear: both;
+                            }
+                        </style>
                         <th class="d-none d-md-table-cell text-center" scope="col">
-                            <h2>Result</h2>
+                            <div class="row">
+                                <div class="column">
+                                    <a href="#" onclick="openNav('detail')">
+                                        <h2>Detail</h2>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a href="#" onclick="openNav('div')">
+                                        <h2>Chia tiền</h2>
+                                    </a>
+                                </div>
+                                <div class="column">
+                                    <a href="#" onclick="openNav('pay')">
+                                        <h2>Thanh toán</h2>
+                                    </a>
+                                </div>
+
+                            </div>
                         </th>
                     </tr>
                 </thead>
@@ -96,21 +133,41 @@
                             <h3 class="text-black text-center" id='images'>TEST</h3>
                         </td>
                         <td>
-                            <h3 class="text-black text-center">VM Royal City số 72A đường Nguyễn Trãi P. Thượng Đình, Q. Thanh Xuân 0903211486 Chào mừng quý khách đến với siêu thị Vinmart 31/08/2017 09:59 Quầy thu ngân:021 SỐ HĐ:00100353 Mã nhân viên:09000081 ** Hóa đơn bán lẻ ++ k. tây
-                                chiên kem chua&hàn Pringles 150g 8886467100086 42.300x1 42.300 КМ -8.400 Bánh que thịt xông khói Tama gói 55g 8850157511681 14.200x1 14.200 Nước giải khát Sprite lon 330ml 8935049510321 7.800x1 7.800 Nước giải khát Coca
-                                t xông khói Tama gói 55g 8850157511681 14.200x1 14.200 Nước giải khát Sprite lon 330ml 8935049510321 7.800x1 7.800 Nước giải khát Coca Cola lon 330ml 8935049510123 8.800x1 8.800 70.000 5.300 Tổng tiền 64.700 TỔNG TIỀN THANH
-                                TOÁN TIỀN MẶT 70.000 TIỀN TRẢ LẠI (Giá đã bao gồm thuế GTGT) ----- NVO-HAHOV. ID thẻ khách hàng * xxxXXXXXXXXX0204 Điểm tích cho đơn hàng Tỉ lệ hoán đổi(1.000VND = 1 điể số tham chiếu 00153202100100353 Chỉ xuất hóa đơn
-                                trong ngày Tax invoice will be issued within same day Thu Thảo | CÁM ƠN QUÝ KHÁCH VÀ HẸN GẶP LẠI hotline: 18006968 Website: www.vinmart.com v y ron
+                            <h3 class="text-black text-center">
+                                <div id="detail" class="w3-container city">
+                                    <h2>London</h2>
+                                    <p>London is the capital city of England.</p>
+                                </div>
 
+                                <div id="div" class="w3-container city" style="display:none">
+                                    <h2>Paris</h2>
+                                    <p>Paris is the capital of France.</p>
+                                </div>
+
+                                <div id="pay" class="w3-container city" style="display:none">
+                                    <h2>Tokyo</h2>
+                                    <p>Tokyo is the capital of Japan.</p>
+                                </div>
                             </h3>
                         </td>
                     </tr>
                 </tbody>
         </div>
+        <!-- End result-->
+
         <script>
             function show_img_details(img_path) {
                 $('#img_detail').attr("src", img_path);
                 $('#img_detail_modal').modal('toggle');
+            }
+
+            function openNav(Name) {
+                var i;
+                var x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                document.getElementById(Name).style.display = "block";
             }
         </script>
         <div id="img_detail_modal" class="modal mt-5" tabindex="-1" role="dialog">
