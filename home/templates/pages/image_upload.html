@@ -411,3 +411,24 @@
 </body>
 
 </html>
+{% comment %} 
+if (res[i][k + 1].charAt(0) == '.') {
+            if ((k + 2 < res[i].length) && ((res[i][k + 2].charCodeAt(0) >= 48) && (res[i][k + 2].charCodeAt(0) <= 57))) {
+              var tmp = "";
+              tmp += res[i][k] + "";
+              tmp += res[i][k + 1] + "";
+              tmp += res[i][k + 2] + "";
+              ans[i].push(tmp);
+              k += 2;
+            } else {
+              ans[i].push(res[i][k]);
+            }
+          } else if (checkNumber(res[i][k+1]) && k != 0) {
+            ans[i].push(res[i][k] + res[i][k + 1]);
+            k++;
+            continue;
+          }
+          else {
+            ans[i].push(res[i][k]);
+          }
+        } {% endcomment %}
