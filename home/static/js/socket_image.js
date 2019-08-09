@@ -59,7 +59,6 @@ function merge(strarr) {
 
 function split_value_line(product_name, line) {
   var product_code = line[0];
-  var split = line[1].indexOf('x');
   var product_value = line[1];
   var product_count = line[2];
   var sum = line[3];
@@ -82,9 +81,14 @@ function getTable(res) {
     for (j = 0; j < res[i].length; j++) {
       var str = res[i][j];
       if (str.charCodeAt(0) < 48 || str.charCodeAt(0) > 57) {
-        console.log(Number(res[i+1][0]));
-        if (res[i + 1].length < 3 || Number(res[i + 1][0]) == NaN) break;
-
+        // console.log(res[i+1][0], Number(res[i+1][0]));
+        if (Number.isNaN(Number(res[i + 1][0])) == true) {
+          break;
+        }
+        if (res[i+1].length < 3){
+          break;
+        }
+        console.log('line', res[i+1][0], res[i+1][0] == NaN)
         // console.log('reached', res[i][j])
         var result = split_value_line(res[i], res[i + 1]);
         if (i + 2 < res.length) {
@@ -192,7 +196,7 @@ function merge_text(w) {
       var list_to_merge = [];
       list_to_merge.push(res[i][j]);
       while (j < res[i].length - 1){
-        if (Math.abs(res[i][j].boundingBox.vertices[2].x - res[i][j + 1].boundingBox.vertices[3].x) <= 15){
+        if (Math.abs(res[i][j].boundingBox.vertices[2].x - res[i][j + 1].boundingBox.vertices[3].x) <= 18){
           list_to_merge.push(res[i][j + 1]);
           j++;
         }
