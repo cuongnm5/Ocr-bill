@@ -6,6 +6,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('image_upload/', views.upload_image, name = 'image_upload'),
     path('login', views.login, name='login'),
+    path('select', views.select, name='select'),
+    path('ocr', views.ocr, name='ocr'),
 ]
 
 if settings.DEBUG: 

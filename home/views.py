@@ -10,3 +10,9 @@ def upload_image(request):
 
 def login(request):
     return render(request, 'pages/login.html')
+
+def select(request):
+    return render(request, 'pages/select.html')
+
+def ocr(request):
+    return render(request, 'pages/ocr.html') 

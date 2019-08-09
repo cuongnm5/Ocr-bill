@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
     <link rel="stylesheet" href="{% static 'css/range_slide.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -94,7 +100,7 @@
                             
                             .column {
                                 float: left;
-                                width: 33.33%;
+                                width: 50%;
                                 padding: 10px;
                                 /* Should be removed. Only for demonstration */
                             }
@@ -118,11 +124,6 @@
                                         <h2>Chia tiền</h2>
                                     </a>
                                 </div>
-                                <div class="column">
-                                    <a href="#" onclick="openNav('pay')">
-                                        <h2>Thanh toán</h2>
-                                    </a>
-                                </div>
 
                             </div>
                         </th>
@@ -136,7 +137,7 @@
                         <td>
                             <h3 class="text-black text-center">
                                 <div id="detail" class="w3-container city">
-                                    
+
                                 </div>
 
                                 <div id="div" class="w3-container city" style="display:none">
@@ -244,6 +245,7 @@
                                                     <div class="nearby-user">
                                                         <button class="btn btn-primary pull-center">Add more</button>
                                                     </div>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -271,6 +273,7 @@
                                                         <input type="range" min="0" max="1000" step="1" value="0">
                                                     </div>
                                                 </div>
+                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thanh toán</button>
                                             </div>
                                         </div>
                                     </div>
@@ -313,6 +316,75 @@
                 document.getElementById(Name).style.display = "block";
             }
         </script>
+        <!---dialog -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <h3>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                Payment Details
+                                            </h3>
+                                            <div class="checkbox pull-right">
+                                                <label>
+                                                    <input type="checkbox" />
+                                                    Remember
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label for="cardNumber">
+                                                    CARD NUMBER</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number" required autofocus />
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-7 col-md-7">
+                                                        <div class="form-group">
+                                                            <label for="expityMonth">
+                                                            EXPIRY DATE</label>
+                                                            <div class="col-xs-6 col-lg-6 pl-ziro">
+                                                                <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-6 pl-ziro">
+                                                                <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-5 col-md-5 pull-right">
+                                                        <div class="form-group">
+                                                            <label for="cvCode">
+                                                            CV CODE</label>
+                                                            <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
+                                        </li>
+                                    </ul>
+                                    <br/>
+                                    <a href="http://www.jquery2dotnet.com" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </h3>
+            </div>
+        </div>
+
         <div id="img_detail_modal" class="modal mt-5" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
