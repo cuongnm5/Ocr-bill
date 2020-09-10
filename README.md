@@ -1,2 +1,2 @@
-# OCR-Finance
-Test.
+# OCR
+OCR finance bill using google API
